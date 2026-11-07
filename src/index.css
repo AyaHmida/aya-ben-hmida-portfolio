@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 244 247 248; --surface: 255 255 255; --ink: 15 34 41; --muted: 88 107 115;
+  --line: 214 224 228; --accent: 14 124 134; --on-accent: 255 255 255;
+}
+.dark {
+  --bg: 12 23 27; --surface: 19 33 39; --ink: 231 241 243; --muted: 148 168 175;
+  --line: 36 54 61; --accent: 92 200 208; --on-accent: 8 28 32;
+}
+html { scroll-behavior: smooth; color-scheme: light; }
+html.dark { color-scheme: dark; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { @apply bg-bg font-sans text-ink antialiased; }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 6px; }
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors; }
+  .btn-primary { @apply bg-accent text-onaccent hover:opacity-90; }
+  .btn-outline { @apply border border-line bg-surface text-ink hover:border-accent hover:text-accent; }
+  .chip { @apply inline-flex items-center rounded-md border border-line bg-bg px-2 py-0.5 text-xs font-medium text-muted; }
+  .icon-btn { @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-ink transition-colors hover:border-accent hover:text-accent; }
+  .field { @apply w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/70 focus:border-accent; }
+}
